@@ -1,6 +1,12 @@
 import { useState } from 'react'
 import { Modal } from '../../components/Modal'
-import { Text, TouchableOpacity, View } from 'react-native'
+import {
+  FlatList,
+  FlatListComponent,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 export const HomeView = () => {
@@ -67,7 +73,14 @@ export const HomeView = () => {
               borderRadius: 10,
             }}
           >
-            <View style={{ backgroundColor: '#f0f0f0', height: '50%' }}></View>
+            <View
+              style={{
+                backgroundColor: '#f0f0f0',
+                height: '50%',
+                borderTopLeftRadius: 10,
+                borderTopRightRadius: 10,
+              }}
+            ></View>
             <Text
               style={{
                 fontSize: 50,
@@ -85,6 +98,326 @@ export const HomeView = () => {
                 backgroundColor: 'white',
                 paddingTop: 30,
                 paddingLeft: 15,
+                borderBottomEndRadius: 10,
+                borderBottomStartRadius: 10,
+              }}
+            >
+              <Text style={{ fontSize: 18, fontWeight: '600' }}>
+                Proyecto 1
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              width: '48%',
+              height: 200,
+              padding: 10,
+              borderRadius: 5,
+              marginTop: 20,
+              shadowColor: '#000',
+              shadowOffset: {
+                width: 0,
+                height: 2,
+              },
+              shadowOpacity: 0.25,
+              shadowRadius: 3.84,
+              elevation: 5,
+              position: 'relative',
+              borderRadius: 10,
+            }}
+          >
+            <View
+              style={{
+                backgroundColor: '#f0f0f0',
+                height: '50%',
+                borderTopLeftRadius: 10,
+                borderTopRightRadius: 10,
+              }}
+            ></View>
+            <Text
+              style={{
+                fontSize: 50,
+                position: 'absolute',
+                top: '40%',
+                left: 20,
+                zIndex: 10,
+              }}
+            >
+              💩
+            </Text>
+            <View
+              style={{
+                height: '50%',
+                backgroundColor: 'white',
+                paddingTop: 30,
+                paddingLeft: 15,
+                borderBottomEndRadius: 10,
+                borderBottomStartRadius: 10,
+              }}
+            >
+              <Text style={{ fontSize: 18, fontWeight: '600' }}>
+                Proyecto 1
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              width: '48%',
+              height: 200,
+              padding: 10,
+              borderRadius: 5,
+              marginTop: 20,
+              shadowColor: '#000',
+              shadowOffset: {
+                width: 0,
+                height: 2,
+              },
+              shadowOpacity: 0.25,
+              shadowRadius: 3.84,
+              elevation: 5,
+              position: 'relative',
+              borderRadius: 10,
+            }}
+          >
+            <View
+              style={{
+                backgroundColor: '#f0f0f0',
+                height: '50%',
+                borderTopLeftRadius: 10,
+                borderTopRightRadius: 10,
+              }}
+            ></View>
+            <Text
+              style={{
+                fontSize: 50,
+                position: 'absolute',
+                top: '40%',
+                left: 20,
+                zIndex: 10,
+              }}
+            >
+              💩
+            </Text>
+            <View
+              style={{
+                height: '50%',
+                backgroundColor: 'white',
+                paddingTop: 30,
+                paddingLeft: 15,
+                borderBottomEndRadius: 10,
+                borderBottomStartRadius: 10,
+              }}
+            >
+              <Text style={{ fontSize: 18, fontWeight: '600' }}>
+                Proyecto 1
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              width: '48%',
+              height: 200,
+              padding: 10,
+              borderRadius: 5,
+              marginTop: 20,
+              shadowColor: '#000',
+              shadowOffset: {
+                width: 0,
+                height: 2,
+              },
+              shadowOpacity: 0.25,
+              shadowRadius: 3.84,
+              elevation: 5,
+              position: 'relative',
+              borderRadius: 10,
+            }}
+          >
+            <View
+              style={{
+                backgroundColor: '#f0f0f0',
+                height: '50%',
+                borderTopLeftRadius: 10,
+                borderTopRightRadius: 10,
+              }}
+            ></View>
+            <Text
+              style={{
+                fontSize: 50,
+                position: 'absolute',
+                top: '40%',
+                left: 20,
+                zIndex: 10,
+              }}
+            >
+              💩
+            </Text>
+            <View
+              style={{
+                height: '50%',
+                backgroundColor: 'white',
+                paddingTop: 30,
+                paddingLeft: 15,
+                borderBottomEndRadius: 10,
+                borderBottomStartRadius: 10,
+              }}
+            >
+              <Text style={{ fontSize: 18, fontWeight: '600' }}>
+                Proyecto 1
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              width: '48%',
+              height: 200,
+              padding: 10,
+              borderRadius: 5,
+              marginTop: 20,
+              shadowColor: '#000',
+              shadowOffset: {
+                width: 0,
+                height: 2,
+              },
+              shadowOpacity: 0.25,
+              shadowRadius: 3.84,
+              elevation: 5,
+              position: 'relative',
+              borderRadius: 10,
+            }}
+          >
+            <View
+              style={{
+                backgroundColor: '#f0f0f0',
+                height: '50%',
+                borderTopLeftRadius: 10,
+                borderTopRightRadius: 10,
+              }}
+            ></View>
+            <Text
+              style={{
+                fontSize: 50,
+                position: 'absolute',
+                top: '40%',
+                left: 20,
+                zIndex: 10,
+              }}
+            >
+              💩
+            </Text>
+            <View
+              style={{
+                height: '50%',
+                backgroundColor: 'white',
+                paddingTop: 30,
+                paddingLeft: 15,
+                borderBottomEndRadius: 10,
+                borderBottomStartRadius: 10,
+              }}
+            >
+              <Text style={{ fontSize: 18, fontWeight: '600' }}>
+                Proyecto 1
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              width: '48%',
+              height: 200,
+              padding: 10,
+              borderRadius: 5,
+              marginTop: 20,
+              shadowColor: '#000',
+              shadowOffset: {
+                width: 0,
+                height: 2,
+              },
+              shadowOpacity: 0.25,
+              shadowRadius: 3.84,
+              elevation: 5,
+              position: 'relative',
+              borderRadius: 10,
+            }}
+          >
+            <View
+              style={{
+                backgroundColor: '#f0f0f0',
+                height: '50%',
+                borderTopLeftRadius: 10,
+                borderTopRightRadius: 10,
+              }}
+            ></View>
+            <Text
+              style={{
+                fontSize: 50,
+                position: 'absolute',
+                top: '40%',
+                left: 20,
+                zIndex: 10,
+              }}
+            >
+              💩
+            </Text>
+            <View
+              style={{
+                height: '50%',
+                backgroundColor: 'white',
+                paddingTop: 30,
+                paddingLeft: 15,
+                borderBottomEndRadius: 10,
+                borderBottomStartRadius: 10,
+              }}
+            >
+              <Text style={{ fontSize: 18, fontWeight: '600' }}>
+                Proyecto 1
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              width: '48%',
+              height: 200,
+              padding: 10,
+              borderRadius: 5,
+              marginTop: 20,
+              shadowColor: '#000',
+              shadowOffset: {
+                width: 0,
+                height: 2,
+              },
+              shadowOpacity: 0.25,
+              shadowRadius: 3.84,
+              elevation: 5,
+              position: 'relative',
+              borderRadius: 10,
+            }}
+          >
+            <View
+              style={{
+                backgroundColor: '#f0f0f0',
+                height: '50%',
+                borderTopLeftRadius: 10,
+                borderTopRightRadius: 10,
+              }}
+            ></View>
+            <Text
+              style={{
+                fontSize: 50,
+                position: 'absolute',
+                top: '40%',
+                left: 20,
+                zIndex: 10,
+              }}
+            >
+              💩
+            </Text>
+            <View
+              style={{
+                height: '50%',
+                backgroundColor: 'white',
+                paddingTop: 30,
+                paddingLeft: 15,
+                borderBottomEndRadius: 10,
+                borderBottomStartRadius: 10,
               }}
             >
               <Text style={{ fontSize: 18, fontWeight: '600' }}>
