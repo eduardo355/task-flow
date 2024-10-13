@@ -9,46 +9,53 @@ import {
 } from 'react-native'
 const close = require('../assets/close.png')
 
-export const Modal = ({ isModalVisible, setIsModalVisible }) => {
+export const Modal = ({
+  icon,
+  setName,
+  setIcon,
+  isModalVisible,
+  handleCreateTask,
+  setIsModalVisible,
+}) => {
   const { height, width } = Dimensions.get('window')
 
   if (!isModalVisible) return
   return (
     <View
       style={{
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        justifyContent: 'center',
-        position: 'absolute',
-        alignItems: 'center',
-        height: height,
-        width: width,
-        zIndex: 1,
-        left: 0,
         top: 0,
         left: 0,
+        left: 0,
+        zIndex: 1,
+        width: width,
+        height: height,
+        position: 'absolute',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
       }}
     >
       <ScrollView
         contentContainerStyle={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%',
           flexGrow: 1,
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
         <View
           style={{
             width: 350,
-            backgroundColor: 'white',
             padding: 20,
             borderRadius: 10,
+            backgroundColor: 'white',
           }}
         >
           <View
             style={{
+              alignItems: 'center',
               flexDirection: 'row',
               justifyContent: 'space-between',
-              alignItems: 'center',
             }}
           >
             <Text style={{ fontSize: 23, fontWeight: '600' }}>
@@ -58,12 +65,33 @@ export const Modal = ({ isModalVisible, setIsModalVisible }) => {
               <Image source={close} style={{ width: 30, height: 30 }} />
             </TouchableHighlight>
           </View>
-          <TextInput style={{ height: 60, fontSize: 60, padding: 5 }} />
+          <TextInput
+            value={icon}
+            onChangeText={(icon) => {
+              const emojiRegex = /^[\p{Emoji}]$/u
+              if (icon === '' || emojiRegex.test(icon)) {
+                setIcon(icon)
+              }
+            }}
+            style={{ height: 60, fontSize: 60, padding: 5 }}
+          />
           <Text style={{ fontSize: 20 }}>Nombre</Text>
           <TextInput
-            style={{ fontSize: 20, padding: 5 }}
             placeholder="Ejemplo.."
+            style={{ fontSize: 20, padding: 5 }}
+            onChangeText={(name) => setName(name)}
           />
+          <TouchableHighlight
+            onPress={() => handleCreateTask()}
+            style={{
+              padding: 10,
+              marginTop: 20,
+              borderRadius: 5,
+              backgroundColor: 'black',
+            }}
+          >
+            <Text style={{ color: 'white', textAlign: 'center' }}>Crear</Text>
+          </TouchableHighlight>
         </View>
       </ScrollView>
     </View>

@@ -1,23 +1,53 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Modal } from '../../components/Modal'
-import {
-  FlatList,
-  FlatListComponent,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native'
+import { Alert, FlatList, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { CardTask } from '../../components/CardTask'
+import { createTask, getTasks } from './actions'
 
 export const HomeView = () => {
+  const [tasks, setTasks] = useState([])
+  const [newTask, setNewTask] = useState({
+    name: '',
+    icon: '',
+    exited: false,
+  })
   const [isModalVisible, setIsModalVisible] = useState(false)
+
+  const handleCreateTask = async () => {
+    if (!newTask.name) Alert.alert('Error', 'El nombre es requerido')
+    const response = await createTask(newTask.name, newTask.icon)
+    console.log(response)
+    if (response) {
+      setIsModalVisible(false)
+      setNewTask({ exited: response })
+    }
+  }
+
+  useEffect(() => {
+    const getTasksC = async () => {
+      const response = await getTasks()
+      if (response) {
+        setTasks(response)
+      }
+    }
+    getTasksC()
+  }, [newTask.exited])
+
   return (
-    <SafeAreaView style={{ padding: 15, position: 'relative', height: '100%' }}>
+    <SafeAreaView
+      style={{
+        padding: 15,
+        height: '100%',
+        position: 'relative',
+        backgroundColor: 'white',
+      }}
+    >
       <View
         style={{
-          justifyContent: 'space-between',
-          flexDirection: 'row',
           alignItems: 'center',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
         }}
       >
         <Text style={{ fontSize: 25, fontWeight: '700' }}>
@@ -26,10 +56,10 @@ export const HomeView = () => {
         <TouchableOpacity
           onPress={() => setIsModalVisible(true)}
           style={{
-            backgroundColor: '#1cf902',
-            paddingHorizontal: 10,
-            paddingVertical: 7,
             borderRadius: 5,
+            paddingVertical: 7,
+            paddingHorizontal: 10,
+            backgroundColor: '#1cf902',
           }}
         >
           <Text style={{ fontSize: 22, color: 'white', fontWeight: '700' }}>
@@ -39,393 +69,36 @@ export const HomeView = () => {
       </View>
 
       <Modal
+        icon={newTask.icon}
         isModalVisible={isModalVisible}
         setIsModalVisible={setIsModalVisible}
+        handleCreateTask={() => handleCreateTask()}
+        setName={(name) => setNewTask({ ...newTask, name })}
+        setIcon={(icon) => setNewTask({ ...newTask, icon })}
       />
 
       <View>
         <Text style={{ fontSize: 20, fontWeight: '600', marginTop: 40 }}>
           Area de proyectos
         </Text>
-        <View
-          style={{
-            flexDirection: 'row',
+        <FlatList
+          contentContainerStyle={{
             flexWrap: 'wrap',
-            justifyContent: 'space-between',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            paddingBottom: 80,
           }}
-        >
-          <View
-            style={{
-              width: '48%',
-              height: 200,
-              padding: 10,
-              borderRadius: 5,
-              marginTop: 20,
-              shadowColor: '#000',
-              shadowOffset: {
-                width: 0,
-                height: 2,
-              },
-              shadowOpacity: 0.25,
-              shadowRadius: 3.84,
-              elevation: 5,
-              position: 'relative',
-              borderRadius: 10,
-            }}
-          >
-            <View
-              style={{
-                backgroundColor: '#f0f0f0',
-                height: '50%',
-                borderTopLeftRadius: 10,
-                borderTopRightRadius: 10,
-              }}
-            ></View>
-            <Text
-              style={{
-                fontSize: 50,
-                position: 'absolute',
-                top: '40%',
-                left: 20,
-                zIndex: 10,
-              }}
-            >
-              💩
-            </Text>
-            <View
-              style={{
-                height: '50%',
-                backgroundColor: 'white',
-                paddingTop: 30,
-                paddingLeft: 15,
-                borderBottomEndRadius: 10,
-                borderBottomStartRadius: 10,
-              }}
-            >
-              <Text style={{ fontSize: 18, fontWeight: '600' }}>
-                Proyecto 1
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              width: '48%',
-              height: 200,
-              padding: 10,
-              borderRadius: 5,
-              marginTop: 20,
-              shadowColor: '#000',
-              shadowOffset: {
-                width: 0,
-                height: 2,
-              },
-              shadowOpacity: 0.25,
-              shadowRadius: 3.84,
-              elevation: 5,
-              position: 'relative',
-              borderRadius: 10,
-            }}
-          >
-            <View
-              style={{
-                backgroundColor: '#f0f0f0',
-                height: '50%',
-                borderTopLeftRadius: 10,
-                borderTopRightRadius: 10,
-              }}
-            ></View>
-            <Text
-              style={{
-                fontSize: 50,
-                position: 'absolute',
-                top: '40%',
-                left: 20,
-                zIndex: 10,
-              }}
-            >
-              💩
-            </Text>
-            <View
-              style={{
-                height: '50%',
-                backgroundColor: 'white',
-                paddingTop: 30,
-                paddingLeft: 15,
-                borderBottomEndRadius: 10,
-                borderBottomStartRadius: 10,
-              }}
-            >
-              <Text style={{ fontSize: 18, fontWeight: '600' }}>
-                Proyecto 1
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              width: '48%',
-              height: 200,
-              padding: 10,
-              borderRadius: 5,
-              marginTop: 20,
-              shadowColor: '#000',
-              shadowOffset: {
-                width: 0,
-                height: 2,
-              },
-              shadowOpacity: 0.25,
-              shadowRadius: 3.84,
-              elevation: 5,
-              position: 'relative',
-              borderRadius: 10,
-            }}
-          >
-            <View
-              style={{
-                backgroundColor: '#f0f0f0',
-                height: '50%',
-                borderTopLeftRadius: 10,
-                borderTopRightRadius: 10,
-              }}
-            ></View>
-            <Text
-              style={{
-                fontSize: 50,
-                position: 'absolute',
-                top: '40%',
-                left: 20,
-                zIndex: 10,
-              }}
-            >
-              💩
-            </Text>
-            <View
-              style={{
-                height: '50%',
-                backgroundColor: 'white',
-                paddingTop: 30,
-                paddingLeft: 15,
-                borderBottomEndRadius: 10,
-                borderBottomStartRadius: 10,
-              }}
-            >
-              <Text style={{ fontSize: 18, fontWeight: '600' }}>
-                Proyecto 1
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              width: '48%',
-              height: 200,
-              padding: 10,
-              borderRadius: 5,
-              marginTop: 20,
-              shadowColor: '#000',
-              shadowOffset: {
-                width: 0,
-                height: 2,
-              },
-              shadowOpacity: 0.25,
-              shadowRadius: 3.84,
-              elevation: 5,
-              position: 'relative',
-              borderRadius: 10,
-            }}
-          >
-            <View
-              style={{
-                backgroundColor: '#f0f0f0',
-                height: '50%',
-                borderTopLeftRadius: 10,
-                borderTopRightRadius: 10,
-              }}
-            ></View>
-            <Text
-              style={{
-                fontSize: 50,
-                position: 'absolute',
-                top: '40%',
-                left: 20,
-                zIndex: 10,
-              }}
-            >
-              💩
-            </Text>
-            <View
-              style={{
-                height: '50%',
-                backgroundColor: 'white',
-                paddingTop: 30,
-                paddingLeft: 15,
-                borderBottomEndRadius: 10,
-                borderBottomStartRadius: 10,
-              }}
-            >
-              <Text style={{ fontSize: 18, fontWeight: '600' }}>
-                Proyecto 1
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              width: '48%',
-              height: 200,
-              padding: 10,
-              borderRadius: 5,
-              marginTop: 20,
-              shadowColor: '#000',
-              shadowOffset: {
-                width: 0,
-                height: 2,
-              },
-              shadowOpacity: 0.25,
-              shadowRadius: 3.84,
-              elevation: 5,
-              position: 'relative',
-              borderRadius: 10,
-            }}
-          >
-            <View
-              style={{
-                backgroundColor: '#f0f0f0',
-                height: '50%',
-                borderTopLeftRadius: 10,
-                borderTopRightRadius: 10,
-              }}
-            ></View>
-            <Text
-              style={{
-                fontSize: 50,
-                position: 'absolute',
-                top: '40%',
-                left: 20,
-                zIndex: 10,
-              }}
-            >
-              💩
-            </Text>
-            <View
-              style={{
-                height: '50%',
-                backgroundColor: 'white',
-                paddingTop: 30,
-                paddingLeft: 15,
-                borderBottomEndRadius: 10,
-                borderBottomStartRadius: 10,
-              }}
-            >
-              <Text style={{ fontSize: 18, fontWeight: '600' }}>
-                Proyecto 1
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              width: '48%',
-              height: 200,
-              padding: 10,
-              borderRadius: 5,
-              marginTop: 20,
-              shadowColor: '#000',
-              shadowOffset: {
-                width: 0,
-                height: 2,
-              },
-              shadowOpacity: 0.25,
-              shadowRadius: 3.84,
-              elevation: 5,
-              position: 'relative',
-              borderRadius: 10,
-            }}
-          >
-            <View
-              style={{
-                backgroundColor: '#f0f0f0',
-                height: '50%',
-                borderTopLeftRadius: 10,
-                borderTopRightRadius: 10,
-              }}
-            ></View>
-            <Text
-              style={{
-                fontSize: 50,
-                position: 'absolute',
-                top: '40%',
-                left: 20,
-                zIndex: 10,
-              }}
-            >
-              💩
-            </Text>
-            <View
-              style={{
-                height: '50%',
-                backgroundColor: 'white',
-                paddingTop: 30,
-                paddingLeft: 15,
-                borderBottomEndRadius: 10,
-                borderBottomStartRadius: 10,
-              }}
-            >
-              <Text style={{ fontSize: 18, fontWeight: '600' }}>
-                Proyecto 1
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              width: '48%',
-              height: 200,
-              padding: 10,
-              borderRadius: 5,
-              marginTop: 20,
-              shadowColor: '#000',
-              shadowOffset: {
-                width: 0,
-                height: 2,
-              },
-              shadowOpacity: 0.25,
-              shadowRadius: 3.84,
-              elevation: 5,
-              position: 'relative',
-              borderRadius: 10,
-            }}
-          >
-            <View
-              style={{
-                backgroundColor: '#f0f0f0',
-                height: '50%',
-                borderTopLeftRadius: 10,
-                borderTopRightRadius: 10,
-              }}
-            ></View>
-            <Text
-              style={{
-                fontSize: 50,
-                position: 'absolute',
-                top: '40%',
-                left: 20,
-                zIndex: 10,
-              }}
-            >
-              💩
-            </Text>
-            <View
-              style={{
-                height: '50%',
-                backgroundColor: 'white',
-                paddingTop: 30,
-                paddingLeft: 15,
-                borderBottomEndRadius: 10,
-                borderBottomStartRadius: 10,
-              }}
-            >
-              <Text style={{ fontSize: 18, fontWeight: '600' }}>
-                Proyecto 1
-              </Text>
-            </View>
-          </View>
-        </View>
+          data={tasks}
+          renderItem={({ item }) => (
+            <CardTask
+              id={item.id}
+              icon={item.icon}
+              name={item.name}
+              status={item.status}
+            />
+          )}
+          keyExtractor={(item) => item.id}
+        />
       </View>
     </SafeAreaView>
   )
