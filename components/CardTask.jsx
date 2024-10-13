@@ -5,7 +5,7 @@ export const CardTask = ({ name, icon, status, id }) => {
   const navigation = useNavigation()
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate('Subtasks', { id: id })}
+      onPress={() => navigation.navigate('Subtasks', { idTask: id })}
     >
       <View
         style={{
@@ -19,7 +19,6 @@ export const CardTask = ({ name, icon, status, id }) => {
           padding: 10,
           elevation: 5,
           marginTop: 20,
-          borderRadius: 5,
           borderRadius: 10,
           shadowRadius: 1.5,
           shadowColor: '#000',

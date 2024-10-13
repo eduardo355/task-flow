@@ -1,4 +1,4 @@
-import { HomeView } from './app/view/HomeView'
+import { HomeView } from './app/view/home/HomeView'
 import { SubtasksView } from './app/view/SubtasksView'
 import { NavigationContainer } from '@react-navigation/native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'

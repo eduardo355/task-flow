@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { Modal } from '../../components/Modal'
-import { Alert, FlatList, Text, TouchableOpacity, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { CardTask } from '../../components/CardTask'
 import { createTask, getTasks } from './actions'
+import { Modal } from '../../../components/Modal'
+import { CardTask } from '../../../components/CardTask'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { Alert, FlatList, Text, TouchableOpacity, View } from 'react-native'
 
 export const HomeView = () => {
   const [tasks, setTasks] = useState([])
@@ -17,7 +17,6 @@ export const HomeView = () => {
   const handleCreateTask = async () => {
     if (!newTask.name) Alert.alert('Error', 'El nombre es requerido')
     const response = await createTask(newTask.name, newTask.icon)
-    console.log(response)
     if (response) {
       setIsModalVisible(false)
       setNewTask({ exited: response })
