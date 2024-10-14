@@ -58,9 +58,6 @@ export const CardTask = ({ name, icon, status, id }) => {
           }}
         >
           <Text style={{ fontSize: 18, fontWeight: '600' }}>{name}</Text>
-          <Text style={{ fontSize: 14, fontWeight: '400', color: 'gray' }}>
-            Estatus: {status}
-          </Text>
         </View>
       </View>
     </TouchableOpacity>
