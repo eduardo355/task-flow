@@ -19,15 +19,18 @@ export const CardSubtask = ({
           height: 3,
         },
         gap: 15,
-        padding: 10,
-        elevation: 5,
+        height: 112,
+        elevation: 2,
         marginTop: 20,
         borderRadius: 10,
         shadowRadius: 1.5,
         shadowColor: '#000',
         shadowOpacity: 0.25,
+        paddingVertical: 10,
         position: 'relative',
-        backgroundColor: '#f7f7f7',
+        paddingHorizontal: 20,
+        backgroundColor: '#E6E6E6',
+        justifyContent: 'space-between',
       }}
     >
       <View
@@ -37,7 +40,7 @@ export const CardSubtask = ({
           justifyContent: 'space-between',
         }}
       >
-        <Text style={{ fontSize: 20, fontWeight: '600' }}>{name}</Text>
+        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{name}</Text>
         {subtask_status !== 'completed' && (
           <TouchableOpacity onPress={() => setIsVisibleOptions(idSubtask)}>
             <Image source={fill} style={{ width: 25, height: 25 }} />
@@ -47,14 +50,17 @@ export const CardSubtask = ({
       {isVisibleOptions === idSubtask && (
         <View
           style={{
-            gap: 10,
-            top: 10,
-            right: 14,
+            top: 13,
+            right: 30,
             zIndex: 10,
-            padding: 15,
-            borderRadius: 5,
+            width: 140,
+            height: 100,
+            borderRadius: 10,
             position: 'absolute',
             backgroundColor: 'white',
+            justifyContent: 'space-between',
+            paddingHorizontal: 10,
+            paddingVertical: 8,
           }}
         >
           {subtask_status !== 'not started' && (
@@ -63,7 +69,9 @@ export const CardSubtask = ({
                 handleUpdateStatusSubtask(idSubtask, 'not started')
               }
             >
-              <Text style={{ fontSize: 21 }}>Pasar a no iniciado</Text>
+              <Text style={{ fontSize: 15, fontWeight: 'regular' }}>
+                Pasar a no iniciado
+              </Text>
             </TouchableOpacity>
           )}
           {subtask_status !== 'in progress' && (
@@ -72,26 +80,34 @@ export const CardSubtask = ({
                 handleUpdateStatusSubtask(idSubtask, 'in progress')
               }
             >
-              <Text style={{ fontSize: 21 }}>Pasar a progreso</Text>
+              <Text style={{ fontSize: 15, fontWeight: 'regular' }}>
+                Pasar a progreso
+              </Text>
             </TouchableOpacity>
           )}
           {subtask_status !== 'completed' && (
             <TouchableOpacity
               onPress={() => handleUpdateStatusSubtask(idSubtask, 'completed')}
             >
-              <Text style={{ fontSize: 21 }}>Completar</Text>
+              <Text style={{ fontSize: 15, fontWeight: 'regular' }}>
+                Completar
+              </Text>
             </TouchableOpacity>
           )}
           <TouchableOpacity onPress={() => handleDeleteSubtask(idSubtask)}>
-            <Text style={{ fontSize: 21, color: 'red' }}>Eliminar</Text>
+            <Text style={{ fontSize: 15, color: 'red', fontWeight: 'regular' }}>
+              Eliminar
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => setIsVisibleOptions(0)}>
-            <Text style={{ fontSize: 21 }}>Cerrar</Text>
+            <Text style={{ fontSize: 15, fontWeight: 'regular' }}>Cerrar</Text>
           </TouchableOpacity>
         </View>
       )}
-      <Text style={{ fontSize: 18, color: 'gray' }}>{description}</Text>
-      <Text>Estado: {subtask_status}</Text>
+      <Text style={{ fontSize: 15, color: '#464646' }}>{description}</Text>
+      <Text style={{ fontSize: 13, color: '#656565' }}>
+        Estado: {subtask_status}
+      </Text>
     </View>
   )
 }

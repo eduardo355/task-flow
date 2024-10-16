@@ -26,6 +26,7 @@ export const HomeView = () => {
   useEffect(() => {
     const getTasksC = async () => {
       const response = await getTasks()
+      console.log(response)
       if (response) {
         setTasks(response)
       }
@@ -49,19 +50,25 @@ export const HomeView = () => {
           justifyContent: 'space-between',
         }}
       >
-        <Text style={{ fontSize: 25, fontWeight: '700' }}>
-          Flujo de proyectos
-        </Text>
+        <Text style={{ fontSize: 24, fontWeight: '700' }}>Task Flow</Text>
         <TouchableOpacity
           onPress={() => setIsModalVisible(true)}
           style={{
-            borderRadius: 5,
+            width: 121,
+            height: 33,
             paddingVertical: 7,
             paddingHorizontal: 10,
-            backgroundColor: '#1cf902',
+            backgroundColor: '#45DD13',
           }}
         >
-          <Text style={{ fontSize: 22, color: 'white', fontWeight: '700' }}>
+          <Text
+            style={{
+              fontSize: 20,
+              color: 'white',
+              fontWeight: 'bold',
+              textAlign: 'center',
+            }}
+          >
             Nuevo +
           </Text>
         </TouchableOpacity>
@@ -77,15 +84,17 @@ export const HomeView = () => {
       />
 
       <View>
-        <Text style={{ fontSize: 20, fontWeight: '600', marginTop: 40 }}>
+        <Text style={{ fontSize: 18, fontWeight: 'medium', marginTop: 40 }}>
           Area de proyectos
         </Text>
         <FlatList
           contentContainerStyle={{
+            gap: 10,
             flexWrap: 'wrap',
+            paddingBottom: 80,
+            alignItems: 'center',
             flexDirection: 'row',
             justifyContent: 'center',
-            paddingBottom: 80,
           }}
           data={tasks}
           renderItem={({ item }) => (

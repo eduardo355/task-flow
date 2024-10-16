@@ -1,6 +1,6 @@
 export const createTask = async (name, icon) => {
   try {
-    const response = await fetch('http://192.168.100.204:3000/api/tasks', {
+    const response = await fetch('http://192.168.0.93:3000/api/tasks', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -21,7 +21,7 @@ export const createTask = async (name, icon) => {
 
 export const getTasks = async () => {
   try {
-    const response = await fetch('http://192.168.100.204:3000/api/tasks')
+    const response = await fetch('http://192.168.0.93:3000/api/tasks')
     if (!response.ok) {
       console.error('Error response:', response)
     }

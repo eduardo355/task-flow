@@ -1,11 +1,11 @@
 import {
-  ScrollView,
   Text,
   View,
-  Dimensions,
-  TouchableHighlight,
   Image,
   TextInput,
+  Dimensions,
+  ScrollView,
+  TouchableOpacity,
 } from 'react-native'
 const close = require('../assets/close.png')
 
@@ -45,10 +45,12 @@ export const Modal = ({
       >
         <View
           style={{
-            width: 350,
+            width: 313,
+            height: 244,
             padding: 20,
             borderRadius: 10,
             backgroundColor: 'white',
+            justifyContent: 'space-between',
           }}
         >
           <View
@@ -58,12 +60,12 @@ export const Modal = ({
               justifyContent: 'space-between',
             }}
           >
-            <Text style={{ fontSize: 23, fontWeight: '600' }}>
+            <Text style={{ fontSize: 20, fontWeight: 'semibold' }}>
               Nuevo Proyecto
             </Text>
-            <TouchableHighlight onPress={() => setIsModalVisible(false)}>
-              <Image source={close} style={{ width: 30, height: 30 }} />
-            </TouchableHighlight>
+            <TouchableOpacity onPress={() => setIsModalVisible(false)}>
+              <Image source={close} style={{ width: 25, height: 25 }} />
+            </TouchableOpacity>
           </View>
           <TextInput
             value={icon}
@@ -73,25 +75,33 @@ export const Modal = ({
                 setIcon(icon)
               }
             }}
-            style={{ height: 60, fontSize: 60, padding: 5 }}
+            style={{ height: 60, fontSize: 60 }}
           />
-          <Text style={{ fontSize: 20 }}>Nombre</Text>
+          <Text style={{ fontSize: 20, fontWeight: 'medium' }}>Nombre</Text>
           <TextInput
             placeholder="Ejemplo.."
-            style={{ fontSize: 20, padding: 5 }}
+            style={{ fontSize: 18, padding: 5 }}
             onChangeText={(name) => setName(name)}
           />
-          <TouchableHighlight
+          <TouchableOpacity
             onPress={() => handleCreateTask()}
             style={{
               padding: 10,
               marginTop: 20,
-              borderRadius: 5,
               backgroundColor: 'black',
             }}
           >
-            <Text style={{ color: 'white', textAlign: 'center' }}>Crear</Text>
-          </TouchableHighlight>
+            <Text
+              style={{
+                fontSize: 20,
+                color: 'white',
+                fontWeight: 'bold',
+                textAlign: 'center',
+              }}
+            >
+              Crear
+            </Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>

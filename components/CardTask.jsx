@@ -13,11 +13,11 @@ export const CardTask = ({ name, icon, status, id }) => {
             width: 0,
             height: 3,
           },
-          width: 180,
-          height: 200,
-          flexGrow: 1,
+          width: 170,
+          height: 170,
           padding: 10,
-          elevation: 5,
+          flexGrow: 1,
+          elevation: 2,
           marginTop: 20,
           borderRadius: 10,
           shadowRadius: 1.5,
@@ -31,15 +31,15 @@ export const CardTask = ({ name, icon, status, id }) => {
             height: '50%',
             borderTopLeftRadius: 10,
             borderTopRightRadius: 10,
-            backgroundColor: '#f0f0f0',
+            backgroundColor: '#D5D4D4',
           }}
         ></View>
         <Text
           style={{
             left: 20,
-            top: '40%',
+            top: '43%',
             zIndex: 10,
-            fontSize: 50,
+            fontSize: 35,
             position: 'absolute',
           }}
         >

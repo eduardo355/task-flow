@@ -23,6 +23,17 @@ export default function App() {
             component={SubtasksView}
             options={{
               headerTitle: 'Subtareas',
+              headerTitleStyle: {
+                fontSize: 20,
+                fontWeight: 'bold',
+              },
+              headerBackTitleStyle: {
+                fontSize: 20,
+                fontWeight: 'bold',
+              },
+              headerStyle: {
+                backgroundColor: '#E6E6E6',
+              },
             }}
           />
         </Stack.Navigator>
